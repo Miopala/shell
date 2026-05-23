@@ -3,6 +3,6 @@
 
 #include "parser.h"
 
-bool handle_builtin(Command *cmd, char *buffer);
+bool handle_builtin(Pipeline *pipeline, char *buffer);
 
 #endif
