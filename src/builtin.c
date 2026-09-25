@@ -35,7 +35,9 @@ bool handle_builtin(Pipeline *pipeline, char *buffer) {
                 print_error();
                 return true;
             }
-            chdir(cmd->args[1]);
+            if (chdir(cmd->args[1]) != 0)
+                print_error();
+
             return true;
         }
 

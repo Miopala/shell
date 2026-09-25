@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/wait.h>
 #include <unistd.h>
 
 void execute_pipeline(Pipeline *pipeline) {
@@ -41,8 +40,6 @@ void execute_pipeline(Pipeline *pipeline) {
                 if (i > 0) {
                     close(pipefds[i - 1][0]);
                 }
-                while (wait(NULL) > 0)
-                    ;
                 return;
             }
         }
@@ -56,9 +53,7 @@ void execute_pipeline(Pipeline *pipeline) {
             if (i < pipeline->cmd_count - 1) {
                 close(pipefds[i][0]);
                 close(pipefds[i][1]);
-            }
-            while (wait(NULL) > 0)
-                ;
+            } 
             return;
         } else if (pid == 0) {
             if (i == 0) {
@@ -104,7 +99,4 @@ void execute_pipeline(Pipeline *pipeline) {
             close(pipefds[i][1]);
         }
     }
-
-    while (wait(NULL) > 0)
-        ;
 }

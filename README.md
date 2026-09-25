@@ -1,5 +1,26 @@
 # Description
-Custom Unix shell implemented in C based on assignment from "Operating Systems: Three Easy Pieces" extended with pipelines and both redirections (e.g. supporting cmd1 | cmd2 | cmd3 | ... | cmdN)
+
+A small Unix shell written in C, based on the shell project from "Operating Systems: Three Easy Pieces". It supports interactive and batch modes, built-in commands (`cd`, `path`, `exit`), pipelines, input and output redirection, and parallel commands separated by `&`.
+
+## Build
+
+```bash
+make
+```
+
+## Usage
+
+Interactive mode:
+
+```bash
+./shell
+```
+
+Batch mode:
+
+```bash
+./shell commands.txt
+```
 
 ## Files overview
 * **`src/common.c`**: Common constants and functions used.
